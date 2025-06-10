@@ -23,17 +23,16 @@ public:
 
     void put(Key key, Value value) override 
     {
-        bool inGhost = checkGhostCaches(key);
-        
-        if (!inGhost) 
+        checkGhostCaches(key);
+
+        // 检查 LFU 部分是否存在该键
+        bool inLfu = lfuPart_->contain(key);
+        // 更新 LRU 部分缓存
+        lruPart_->put(key, value);
+        // 如果 LFU 部分存在该键，则更新 LFU 部分
+        if (inLfu) 
         {
-            if (lruPart_->put(key, value)) 
-            {
-                lfuPart_->put(key, value);
-            }
-        } else 
-        {
-            lruPart_->put(key, value);
+            lfuPart_->put(key, value);
         }
     }
 

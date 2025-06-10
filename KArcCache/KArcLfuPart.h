@@ -53,6 +53,11 @@ public:
         return false;
     }
 
+    bool contain(Key key)
+    {
+        return mainCache_.find(key) != mainCache_.end();
+    }
+
     bool checkGhost(Key key) 
     {
         auto it = ghostCache_.find(key);
@@ -182,7 +187,7 @@ private:
         if (!node->prev_.expired() && node->next_) {
             auto prev = node->prev_.lock();
             prev->next_ = node->next_;
-            node->next_->prev_ = node->prev_;
+        node->next_->prev_ = node->prev_;
             node->next_ = nullptr; // 清空指针，防止悬垂引用
         }
     }
