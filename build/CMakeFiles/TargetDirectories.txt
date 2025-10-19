@@ -1,0 +1,3 @@
+/mnt/c/Users/Lily/Desktop/cppProject/CppCache/build/CMakeFiles/main.dir
+/mnt/c/Users/Lily/Desktop/cppProject/CppCache/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Lily/Desktop/cppProject/CppCache/build/CMakeFiles/rebuild_cache.dir
